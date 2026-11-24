@@ -200,3 +200,17 @@ Everyone picks from the same list (player and bots). Mirror matches are fine. Ea
 - Intel/fog-of-war design (deferred)
 - Map generation rules (castle-type mix, distance between factions)
 - Tech stack (likely same as the racer: static page, GitHub → VM pipeline)
+
+---
+
+## 13. v0.1 build notes (choices made while building)
+
+- **Capitals** start with level-2 guardians; neutral guardians scale with distance from the factions (tier 1–3: 1/3/4 Old Sentinels, tower level = tier).
+- **Command limit:** 5 + 2 per castle. A castle fights with 6 slots; extra squads sit in **reserve** and fill gaps after losses.
+- **Battle pace:** 1 tick = 0.5 s, up to 240 ticks (2 min of battle time). Attackers retreat below 20% strength. Towers deal moderate damage, so equal armies usually can't take a fortified castle: siege, a breach-then-follow-up, or bigger numbers are needed.
+- **Outcomes:** Routed = core destroyed. Breached = core below 50%, 2+ towers down, or the whole garrison killed. An army still standing when the timer runs out keeps the siege going next evening.
+- **Capture:** guardians come back at 30% (core 40%) for the new owner; surviving defenders flee to their nearest castle.
+- **Homeless factions** (no castles but an army in the field) stay alive; the King rides with that army. Full Wandering Court still to come.
+- **Bots** predict each attack by running the battle sim (they can see everything for now), and focus whoever holds 6+ castles.
+- **Off-screen battles** use the same sim as yours (no separate dice formula).
+- **Upkeep:** hunger costs every squad 10% HP per night.
